@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Team Oranana Banana</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 18px;
+
+            background-image:url("./files/wallpaper.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+
+            font-family: "Pixelated MS Sans Serif", Arial;
+        }
+
+        .main-window {
+            width: 1200px;
+            height: 700px;
+
+            margin: auto;
+        }
+
+        .layout {
+            display: grid;
+
+            grid-template-columns: 220px 1fr;
+
+            height: 590px;
+        }
+
+        .sidebar {
+            border-right: 1px solid gray;
+
+            padding-right: 10px;
+
+            overflow: hidden;
+        }
+
+        .content {
+            padding-left: 12px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+
+            gap: 10px;
+
+            height: 100%;
+        }
+
+        .panel {
+            border: 1px solid silver;
+
+            background: white;
+
+            padding: 10px;
+
+            overflow: auto;
+        }
+
+        .panel h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .welcome-panel {
+            grid-column: span 2;
+        }
+
+        .team-panel {
+            grid-column: span 2;
+        }
+
+        .member {
+            margin-bottom: 10px;
+
+            padding-bottom: 10px;
+
+            border-bottom: 1px solid #d4d0c8;
+        }
+
+        .member:last-child {
+            border-bottom: none;
+        }
+
+        .project {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-top: 6px;
+            list-style-type: none;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 4px 0;
+        }
+
+        .status-box {
+            margin-top: 16px;
+        }
+
+        .status-box p {
+            margin: 6px 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        details {
+            margin-bottom: 8px;
+        }
+
+        details[open] {
+            padding-bottom: 6px;
+        }
+
+        .scrollable-panel {
+            max-height: 220px;
+            overflow-y: auto;
+        }
+    </style>
+
+</head>
+
+    <body>
+        <div class="window main-window">
+
+            <div class="title-bar">
+                <div class="title-bar-text"></div>
+            </div>
+
+            <div class="window-body">
+                <div class="layout">
+                    <div class="sidebar panel">
+                        <div class="status-box">
+                            <strong>Status :</strong>
+
+                            {STATUS}
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="panel welcome-panel">
+                            <h3>
+                                Welcome!! :D
+                            </h3>
+
+                            <p>
+                                Welcome to the official Oranana Banana Team Website.
+                            </p>
+
+                            <p>
+                                We are a small little team that creates games, recreations and all sorts of fun stuff.
+                            </p>
+
+                            <p>
+                                This website's purpose is to serve you information on what's ready to be shared with the public, like blogs and other sorts.
+                            </p>
+                        </div>
+
+                        <div class="panel scrollable-panel">
+                            <h3>
+                                Current Projects :0
+                            </h3>
+
+                            {PROJECTS}
+
+                        </div>
+
+                        <div class="panel scrollable-panel">
+                            <h3>
+                                Public Roadmap ( O _ O )
+                            </h3>
+
+                            {ROADMAP}
+                        </div>
+
+                        <div class="panel team-panel">
+                            <h3>
+                                Team Members ^V^
+                            </h3>
+
+                            {TEAM}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
