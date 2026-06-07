@@ -109,19 +109,33 @@ def generate_roadmap():
     )
 
 def generate_status():
-    if not os.path.exists("status.txt"):
-        return "<p></p>"
+    version = "Unknown"
 
-    with open("status.txt", encoding="utf-8") as f:
-        lines = [line.strip() for line in f if line.strip()]
+    if os.path.exists("status.json"):
+        with open("status.json", encoding="utf-8") as f:
+            status = json.load(f)
 
-    if not lines:
-        return "<p></p>"
+        version = status.get("version", "???")
 
-    return "\n".join(
-        f"<p>{line}</p>"
-        for line in lines
-    )
+    team_count = 0
+    if os.path.exists("team"):
+        team_count = len([
+            f for f in os.listdir("team")
+            if f.endswith(".json")
+        ])
+
+    project_count = 0
+    if os.path.exists("projects"):
+        project_count = len([
+            f for f in os.listdir("projects")
+            if f.endswith(".json")
+        ])
+
+    return f"""
+<p>Currently in development: {project_count}</p>
+<p>Team Count: {team_count}</p>
+<p>Website Ver: {version}</p>
+"""
 
 def main():
     os.makedirs("output", exist_ok=True)
@@ -157,7 +171,7 @@ def main():
         os.makedirs(output_dir, exist_ok=True)
 
         shutil.copy2(filename, output_file)
-        print(f"Copied asset: {output_file}")
+        # print(f"Copied asset: {output_file}")
 
 
 if __name__ == "__main__":
